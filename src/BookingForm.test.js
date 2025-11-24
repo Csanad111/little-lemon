@@ -3,19 +3,19 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import BookingForm from './BookingForm';
 
 describe('BookingForm', () => {
-    const availableTimes = ['17:00', '18:00'];
+    const availableTimeSlots = ['17:00', '18:00'];
     const dispatch = jest.fn();
 
-    test('Renders the BookingForm labels', () => {
-        render(<BookingForm availableTimes={availableTimes} dispatch={dispatch} />);
+    test('should render all labels', () => {
+        render(<BookingForm availableTimeSlots={availableTimeSlots} dispatch={dispatch} />);
         expect(screen.getByLabelText(/Choose date/i)).toBeInTheDocument();
         expect(screen.getByLabelText(/Choose time/i)).toBeInTheDocument();
         expect(screen.getByLabelText(/Number of guests/i)).toBeInTheDocument();
         expect(screen.getByLabelText(/Occasion/i)).toBeInTheDocument();
     });
 
-    test('HTML5 validation attributes are applied', () => {
-        render(<BookingForm availableTimes={availableTimes} dispatch={dispatch} />);
+    test('should have validation attributes', () => {
+        render(<BookingForm availableTimeSlots={availableTimeSlots} dispatch={dispatch} />);
 
         const dateInput = screen.getByLabelText(/Choose date/i);
         expect(dateInput).toHaveAttribute('required');
@@ -32,14 +32,14 @@ describe('BookingForm', () => {
         expect(occasionSelect).toHaveAttribute('required');
     });
 
-    test('Submit button is enabled when form is valid', () => {
-        render(<BookingForm availableTimes={availableTimes} dispatch={dispatch} />);
+    test('enable submit button if form is valid', () => {
+        render(<BookingForm availableTimeSlots={availableTimeSlots} dispatch={dispatch} />);
         const submitButton = screen.getByRole('button', { name: /Make Your reservation/i });
         expect(submitButton).not.toBeDisabled();
     });
 
-    test('Submit button is disabled when number of guests is invalid', () => {
-        render(<BookingForm availableTimes={availableTimes} dispatch={dispatch} />);
+    test('disable submit button if guests number is invalid', () => {
+        render(<BookingForm availableTimeSlots={availableTimeSlots} dispatch={dispatch} />);
         const guestsInput = screen.getByLabelText(/Number of guests/i);
         const submitButton = screen.getByRole('button', { name: /Make Your reservation/i });
 

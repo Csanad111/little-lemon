@@ -1,32 +1,24 @@
 import React, { useState } from 'react';
 
-function BookingForm({ availableTimes, dispatch }) {
+function BookingForm({ availableTimeSlots, dispatch }) {
     const [bookingDate, setBookingDate] = useState(new Date().toISOString().split('T')[0]);
-    const [bookingTime, setBookingTime] = useState(availableTimes.length > 0 ? availableTimes[0] : "");
+    const [bookingTime, setBookingTime] = useState(availableTimeSlots.length > 0 ? availableTimeSlots[0] : "");
     const [numberOfGuests, setNumberOfGuests] = useState(1);
     const [occasion, setOccasion] = useState("Birthday");
 
-    const handleDateChange = (e) => {
+    const changeDate = (e) => {
         const newDate = e.target.value;
         setBookingDate(newDate);
         dispatch({ type: 'UPDATE_TIMES', payload: newDate });
     };
 
-    const isFormValid = () => {
-        return (
-            bookingDate !== "" &&
-            bookingTime !== "" &&
-            numberOfGuests >= 1 &&
-            numberOfGuests <= 10 &&
-            occasion !== ""
-        );
-    };
+    const isValid = bookingDate !== "" && bookingTime !== "" && numberOfGuests >= 1 && numberOfGuests <= 10 && occasion !== "";
 
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (isFormValid()) {
+        if (isValid) {
             setIsSubmitted(true);
         }
     };
@@ -50,9 +42,8 @@ function BookingForm({ availableTimes, dispatch }) {
                 type="date"
                 id="res-date"
                 value={bookingDate}
-                onChange={handleDateChange}
+                onChange={changeDate}
                 required
-                aria-label="Choose date"
             />
 
             <label htmlFor="res-time">Choose time</label>
@@ -61,9 +52,8 @@ function BookingForm({ availableTimes, dispatch }) {
                 value={bookingTime}
                 onChange={(e) => setBookingTime(e.target.value)}
                 required
-                aria-label="Choose time"
             >
-                {availableTimes.map(time => <option key={time}>{time}</option>)}
+                {availableTimeSlots.map(time => <option key={time}>{time}</option>)}
             </select>
 
             <label htmlFor="guests">Number of guests</label>
@@ -76,7 +66,6 @@ function BookingForm({ availableTimes, dispatch }) {
                 value={numberOfGuests}
                 onChange={(e) => setNumberOfGuests(e.target.value)}
                 required
-                aria-label="Number of guests"
             />
 
             <label htmlFor="occasion">Occasion</label>
@@ -85,7 +74,6 @@ function BookingForm({ availableTimes, dispatch }) {
                 value={occasion}
                 onChange={(e) => setOccasion(e.target.value)}
                 required
-                aria-label="Occasion"
             >
                 <option>Birthday</option>
                 <option>Anniversary</option>
@@ -94,8 +82,7 @@ function BookingForm({ availableTimes, dispatch }) {
             <input
                 type="submit"
                 value="Make Your reservation"
-                disabled={!isFormValid()}
-                aria-label="Make Your reservation"
+                disabled={!isValid}
             />
         </form>
     );

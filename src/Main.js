@@ -3,12 +3,11 @@ import { Routes, Route } from 'react-router-dom';
 import Homepage from './Homepage';
 import BookingPage from './BookingPage';
 
-export const updateTimes = (state, action) => {
-  console.log("Updating times for date:", action);
-  return initializeTimes();
+export const timesReducer = (state, action) => {
+  return initTimes();
 };
 
-export const initializeTimes = () => {
+export const initTimes = () => {
   return [
     "17:00",
     "18:00",
@@ -20,7 +19,7 @@ export const initializeTimes = () => {
 };
 
 function Main() {
-  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+  const [availableTimes, dispatch] = useReducer(timesReducer, initTimes());
 
   return (
     <main>
