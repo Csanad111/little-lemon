@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import heroImage from './logo.svg'; // Placeholder kép
+import heroImage from './assets/restauranfood.jpg';
 
 function Homepage() {
   const specials = [
@@ -8,28 +8,27 @@ function Homepage() {
       id: 1,
       name: 'Greek salad',
       price: '$12.99',
-      image: 'https://via.placeholder.com/300x200?text=Greek+Salad',
+      image: 'https://i.ibb.co/68c9bLv/greek-salad.jpg',
       description: 'The famous greek salad of crispy cucumber, tomatoes, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.'
     },
     {
       id: 2,
       name: 'Bruchetta',
       price: '$ 5.99',
-      image: 'https://via.placeholder.com/300x200?text=Bruchetta',
+      image: 'https://i.ibb.co/317GqZv/bruchetta.png',
       description: 'Our Bruchetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.'
     },
     {
       id: 3,
       name: 'Lemon Dessert',
       price: '$ 5.00',
-      image: 'https://via.placeholder.com/300x200?text=Lemon+Dessert',
+      image: 'https://i.ibb.co/sm6M9xD/lemon-dessert.jpg',
       description: 'This comes straight from grandma\'s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.'
     }
   ];
 
   return (
     <>
-      {/* Hero Section */}
       {/* Hero Section */}
       <section className="hero-section">
         <div className="container">
@@ -43,7 +42,7 @@ function Homepage() {
             <Link to="/booking" className="btn-primary">Reserve a Table</Link>
           </div>
           <div className="hero-image">
-            <img src={heroImage} alt="Előétel tál" />
+            <img src={heroImage} alt="Restaruant Food" />
           </div>
         </div>
       </section>
