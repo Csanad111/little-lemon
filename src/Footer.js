@@ -4,7 +4,6 @@ function Footer() {
       <div className="container">
         <div className="footer-content">
           <section>
-            {/* Link oszlop (pl. oldaltérkép) */}
             <h3>Doormat Navigation</h3>
             <ul>
               <li><a href="/">Home</a></li>
@@ -15,7 +14,6 @@ function Footer() {
           </section>
 
           <section>
-            {/* Elérhetőségek */}
             <h3>Contact</h3>
             <p>Address: 123 Town Street, Chicago</p>
             <p>Phone: (123) 456-7890</p>
@@ -23,7 +21,6 @@ function Footer() {
           </section>
 
           <section>
-            {/* Közösségi média linkek */}
             <h3>Social Media Links</h3>
             <ul>
               <li><a href="#">Facebook</a></li>

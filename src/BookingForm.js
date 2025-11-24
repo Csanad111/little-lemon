@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 
 function BookingForm({ availableTimes, dispatch }) {
-    // State for each form field
     const [bookingDate, setBookingDate] = useState(new Date().toISOString().split('T')[0]);
     const [bookingTime, setBookingTime] = useState(availableTimes.length > 0 ? availableTimes[0] : "");
     const [numberOfGuests, setNumberOfGuests] = useState(1);
     const [occasion, setOccasion] = useState("Birthday");
 
-    // Handler for date change
     const handleDateChange = (e) => {
         const newDate = e.target.value;
         setBookingDate(newDate);
         dispatch({ type: 'UPDATE_TIMES', payload: newDate });
     };
 
-    // Check if the form is valid
     const isFormValid = () => {
         return (
             bookingDate !== "" &&
@@ -27,12 +24,10 @@ function BookingForm({ availableTimes, dispatch }) {
 
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    // Handler for form submission
     const handleSubmit = (e) => {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault();
         if (isFormValid()) {
             setIsSubmitted(true);
-            // Reset form logic could go here
         }
     };
 
@@ -68,7 +63,6 @@ function BookingForm({ availableTimes, dispatch }) {
                 required
                 aria-label="Choose time"
             >
-                {/* Map over the availableTimes array to create options */}
                 {availableTimes.map(time => <option key={time}>{time}</option>)}
             </select>
 

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import heroImage from './assets/restauranfood.jpg';
 
+import lemonDessert from './assets/lemon_dessert.png';
+
 function Homepage() {
   const specials = [
     {
@@ -22,14 +24,13 @@ function Homepage() {
       id: 3,
       name: 'Lemon Dessert',
       price: '$ 5.00',
-      image: 'https://i.ibb.co/sm6M9xD/lemon-dessert.jpg',
+      image: lemonDessert,
       description: 'This comes straight from grandma\'s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.'
     }
   ];
 
   return (
     <>
-      {/* Hero Section */}
       <section className="hero-section">
         <div className="container">
           <div className="hero-content">
@@ -47,7 +48,6 @@ function Homepage() {
         </div>
       </section>
 
-      {/* Specials Section */}
       <section className="specials-section">
         <div className="container">
           <div className="specials-header">
